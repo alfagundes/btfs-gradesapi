@@ -1,9 +1,9 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import { gradeRouter } from "./routes/grade.Router.js";
-
+import { gradeRouter } from "./routes/gradeRouter.js";
 import { db } from './models/index.js';
+
 
 (async () => {
   try {
@@ -21,9 +21,11 @@ const app = express();
 //define o dominio de origem para consumo do servico
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use(
   cors({
-    origin: 'http://localhost:3131',
+    //origin: 'http://localhost:3131',
+    origin: 'https://btfs-gradesapp.herokuapp.com/',
   })
 );
 
@@ -31,4 +33,8 @@ app.get('/', (req, res) => {
   res.send('API em execução');
 });
 
-app.listen(process.env.PORT || 8081, () => { });
+const PORT = process.env.PORT || 8081;
+
+app.listen(PORT, () => {
+  console.log(`Servidor em execução na porta ${PORT}`);
+});
