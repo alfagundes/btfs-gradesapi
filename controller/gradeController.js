@@ -66,7 +66,7 @@ const findOne = async (req, res) => {
 
   try {
 
-    const data = await.Grade.findById({ _id: id });
+    const data = await Grade.findById({ _id: id });
     const { _id, name, subject, type, value } = data;
     res.send({
       _id: id,
