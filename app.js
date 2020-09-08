@@ -25,7 +25,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   cors({
     //origin: 'http://localhost:3131',
-    origin: 'https://btfs-gradesapp.herokuapp.com/grade',
+    //origin: 'https://btfs-gradesapp.herokuapp.com/grade',
+    origin: process.env.CORS_URL,
   })
 );
 
@@ -33,8 +34,8 @@ app.get('/', (req, res) => {
   res.send('API em execução');
 });
 
+app.use(gradeRouter);
+
 const PORT = process.env.PORT || 8081;
 
-app.listen(PORT, () => {
-  console.log(`Servidor em execução na porta ${PORT}`);
-});
+app.listen(process.env.PORT || 8081, () => { });
