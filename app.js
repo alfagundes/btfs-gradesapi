@@ -25,8 +25,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   cors({
     //origin: 'http://localhost:3131',
-    //origin: 'https://btfs-gradesapp.herokuapp.com/grade',
-    origin: process.env.CORS_URL,
+    origin: 'https://btfs-gradesapp.herokuapp.com',
+    //origin: process.env.CORS_URL,
   })
 );
 
